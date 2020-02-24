@@ -14,4 +14,25 @@
 
 # 输出例子1:
 # 30
+while True:
+    HatNumber = int(input ("input a Number:"))
+    if HatNumber>0 and HatNumber<=50:
+        break
+HatPrice=[]    
+while True:
+    HatPriceRaw = input ().split ()
+    if len(HatPriceRaw) > HatNumber:
+        print ("input error")
+    else:
+        break 
+for i in range (HatNumber):
+    if HatPriceRaw[i] in HatPrice:
+        continue
+    else:
+        HatPrice.append (HatPriceRaw[i])
+HatPrice.sort()
+if len (HatPrice) > 2:
+    print (HatPrice[2])
+else:
+    print ("-1")
 

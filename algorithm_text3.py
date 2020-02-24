@@ -22,3 +22,20 @@
 
 # 输出例子1:
 # 6.00000
+import numpy as np
+
+#create point map
+while True:
+    pointNumber=int(input("input a number:"))
+    if pointNumber <= 50:
+        break
+pointArr=[]
+for i in range(int(pointNumber)):
+    a=input().split()#需要修改省掉a
+    point=dict()
+    point['color'] = a[0]
+    point['x'] = a[1]
+    point['y'] = a[2]
+    point['z'] = a[3]
+    pointArr.append(point)
+print(pointArr)

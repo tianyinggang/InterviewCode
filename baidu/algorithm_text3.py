@@ -24,18 +24,21 @@
 # 6.00000
 import numpy as np
 import itertools
+
 #create point map
 while True:
     pointNumber=int(input("input a number:"))
     if pointNumber <= 50:
         break
-pointArr=[]
+
+#create point in place
 class point:
     def __init__(self,color,x,y,z):
         self.color=color
         self.x=x
         self.y=y
         self.z=z
+pointArr=[] #三维空间里所有点的集合
 for i in range(int(pointNumber)):
     a=input().split()#需要修改省掉a
     point.color=a[0]

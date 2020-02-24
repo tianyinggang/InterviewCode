@@ -23,19 +23,39 @@
 # 输出例子1:
 # 6.00000
 import numpy as np
-
+import itertools
 #create point map
 while True:
     pointNumber=int(input("input a number:"))
     if pointNumber <= 50:
         break
 pointArr=[]
+class point:
+    def __init__(self,color,x,y,z):
+        self.color=color
+        self.x=x
+        self.y=y
+        self.z=z
 for i in range(int(pointNumber)):
     a=input().split()#需要修改省掉a
-    point=dict()
-    point['color'] = a[0]
-    point['x'] = a[1]
-    point['y'] = a[2]
-    point['z'] = a[3]
+    point.color=a[0]
+    point.x=a[1]
+    point.y=a[2]
+    point.z=a[3]
     pointArr.append(point)
-print(pointArr)
+triangleARR=[]
+for i in range(1,len(pointArr)+1):
+    iter = itertools.combinations(pointArr,i)
+    triangleARR.append(list(iter))
+
+
+def triangle_area(triangleArr):
+    def point_range(point1,point2):
+        Range=np.sqrt((np.power(point1.x-point2.x,2)+np.power(point1.y-point2.y,2)+np.power(point1.z-point2.z,2)))
+        return Range
+    triangleRange1 = point_range(triangleArr[0],triangleArr[1])
+    triangleRange2 = point_range(triangleArr[2], triangleArr[1])
+    triangleRange3 = point_range(triangleArr[0], triangleArr[2])
+    Range123=triangleRange1+triangleRange2+triangleRange3
+    area=np.sqrt(Range123*(Range123-triangleRange1)*(Range123-triangleRange2)*(Range123-triangleRange3))
+    return area

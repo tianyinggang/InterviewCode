@@ -22,8 +22,16 @@
 
 # 输出例子1:
 # 6.00000
+
 import numpy as np
-import itertools
+from itertools import combinations,permutations 
+
+class point:
+    def __init__(self,color,x,y,z):
+        self.color=color
+        self.x=x
+        self.y=y
+        self.z=z
 
 #create point map
 while True:
@@ -32,12 +40,6 @@ while True:
         break
 
 #create point in place
-class point:
-    def __init__(self,color,x,y,z):
-        self.color=color
-        self.x=x
-        self.y=y
-        self.z=z
 pointArr=[] #三维空间里所有点的集合
 for i in range(int(pointNumber)):
     a=input().split()#需要修改省掉a
@@ -46,19 +48,34 @@ for i in range(int(pointNumber)):
     point.y=a[2]
     point.z=a[3]
     pointArr.append(point)
-triangleARR=[]
-for i in range(1,len(pointArr)+1):
-    iter = itertools.combinations(pointArr,i)
-    triangleARR.append(list(iter))
+triangleARR=[]#三角形组合list
+for point1,point2,point3 in combinations()
 
-
-def triangle_area(triangleArr):
-    def point_range(point1,point2):
-        Range=np.sqrt((np.power(point1.x-point2.x,2)+np.power(point1.y-point2.y,2)+np.power(point1.z-point2.z,2)))
-        return Range
-    triangleRange1 = point_range(triangleArr[0],triangleArr[1])
-    triangleRange2 = point_range(triangleArr[2], triangleArr[1])
-    triangleRange3 = point_range(triangleArr[0], triangleArr[2])
-    Range123=triangleRange1+triangleRange2+triangleRange3
-    area=np.sqrt(Range123*(Range123-triangleRange1)*(Range123-triangleRange2)*(Range123-triangleRange3))
-    return area
+#Calculate triangular area
+# def triangle_area(triangleArr):
+#     def point_range(point1,point2):
+#         Range=np.sqrt((np.power(point1.x-point2.x,2)+np.power(point1.y-point2.y,2)+np.power(point1.z-point2.z,2)))
+#         return Range
+#     triangleRange1 = point_range(triangleArr[0],triangleArr[1])
+#     triangleRange2 = point_range(triangleArr[2], triangleArr[1])
+#     triangleRange3 = point_range(triangleArr[0], triangleArr[2])
+#     Range123=triangleRange1+triangleRange2+triangleRange3
+#     area=np.sqrt(Range123*(Range123-triangleRange1)*(Range123-triangleRange2)*(Range123-triangleRange3))
+#     return area
+# def color_choose(triangleARR):
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

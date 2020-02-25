@@ -25,57 +25,65 @@
 
 import numpy as np
 from itertools import combinations,permutations 
+from sys import stdin
 
 class point:
-    def __init__(self,color,x,y,z):
-        self.color=color
-        self.x=x
-        self.y=y
-        self.z=z
+    def __init__(self,color,a):
+        self.color=a[0]
+        self.x = int(a[1])
+        self.y = int(a[2])
+        self.z = int(a[3])
+        
+class solution():
+    def __init__(self,l):
+        self.l = l
+    pointArr = []
+    def main(self,pointNumber):
+        max = 0
+        for i in range(pointNumber):
+            for j in range(i+1,pointNumber):
+                for k in range(j+1,pointNumber):
+                    if self.IsSan(i,j,k) and self.color_choose(i,j,k):
+                        area = self.triangle_area(i,j,k)
+                        if max < area:
+                            max = area
+        return max
+    def point_length(self,point1,point2):
+        return ((self.pointArr[point1].x-self.pointArr[point2].x)**2+(self.pointArr[point1].y-self.pointArr[point2].y)**2+(self.pointArr[point1].z-self.pointArr[point2].z)**2)**0.5
+    def IsSan(self,point1,point2,point3):
+        a = self.point_length(point1,point2)
+        b = self.point_length(point1,point3)
+        c = self.point_length(point3,point2)
+        if a<b+c and b<a+c and c<a+b :
+            return True
+        return False
 
-#create point map
-while True:
-    pointNumber=int(input("input a number:"))
-    if pointNumber <= 50:
-        break
-
-#create point in place
-pointArr=[] #三维空间里所有点的集合
-for i in range(int(pointNumber)):
-    a=input().split()#需要修改省掉a
-    point.color=a[0]
-    point.x=a[1]
-    point.y=a[2]
-    point.z=a[3]
-    pointArr.append(point)
-triangleARR=[]#三角形组合list
-for point1,point2,point3 in combinations()
-
-#Calculate triangular area
-# def triangle_area(triangleArr):
-#     def point_range(point1,point2):
-#         Range=np.sqrt((np.power(point1.x-point2.x,2)+np.power(point1.y-point2.y,2)+np.power(point1.z-point2.z,2)))
-#         return Range
-#     triangleRange1 = point_range(triangleArr[0],triangleArr[1])
-#     triangleRange2 = point_range(triangleArr[2], triangleArr[1])
-#     triangleRange3 = point_range(triangleArr[0], triangleArr[2])
-#     Range123=triangleRange1+triangleRange2+triangleRange3
-#     area=np.sqrt(Range123*(Range123-triangleRange1)*(Range123-triangleRange2)*(Range123-triangleRange3))
-#     return area
-# def color_choose(triangleARR):
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    # Calculate triangular area
+    def triangle_area(self,point1,point2,point3):
+        a = self.point_length(point1,point2)
+        b = self.point_length(point1,point3)
+        c = self.point_length(point3,point2)
+        p = 0.5*(a+b+c)
+        area = (p*(p-a)*(p-b)*(p-c))**0.5
+        return area
+    def color_choose(self,i,j,k):
+        ci = self.pointArr[i].color
+        cj = self.pointArr[j].color
+        ck = self.pointArr[k].color
+        if ci == cj == ck or (ci!=cj and ci!=ck and cj!=ck):
+            return True
+        return False
+        
+if __name__=='__main__':
+    while True:
+        pointNumber=int(input("input a number:"))
+        if pointNumber <= 50:
+            break
+        Arr=[]
+        for i in range(pointNumber):
+            point_str = readline().strip().split()
+            node = point(point_str)
+            Arr.append(node)
+        Max=solution(Arr)
+        print("%.5f"%s.main(pointNumber))
+            
